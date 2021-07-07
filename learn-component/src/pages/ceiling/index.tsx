@@ -61,7 +61,7 @@ function Index() {
     const myObserver = new IntersectionObserver(entries => {
       // console.log(entries, '--entries--');
       let item = entries[0];
-      // console.log(item, '--item--');
+      console.log(item, '--item--');
       if(item.boundingClientRect.top < 40){
         console.log('可以吸顶了')
         setShow(false);
