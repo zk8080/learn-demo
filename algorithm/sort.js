@@ -20,7 +20,6 @@ function bubbleSort(arr = []) {
     // 优化点：加一个标识 如果在内循环中未出现交换，则代表已经是有序数组
     let flag = true;
     for (let j = 0; j < len - 1 - i; j++) {
-      console.log(arr[j], '--arr[j]--')
       if(arr[j] > arr[j + 1]){
         [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
         flag = false;
@@ -45,7 +44,7 @@ function selectionSort(arr = []) {
   let minIndex;
   for (let i = 0; i < len; i++) {
     minIndex = i;
-    for (let j = i; j < len; j++) {
+    for (let j = i + 1; j < len; j++) {
       if(arr[j] < arr[minIndex]){
         minIndex = j;
       }
@@ -81,3 +80,61 @@ function insertSort(arr = []) {
 const insertArr = generateRandArr(5, 0, 10);
 console.log(insertArr, '--insertArr--');
 testSort('insertSort', insertSort, insertArr);
+
+
+/**
+ * 归并排序
+ * 重复分割数组，直到每个数组只有一个元素，再两两合并有序数组 
+*/ 
+
+function mergeSort(arr = []) {
+  const len = arr.length;
+  // console.log(arr,'---arrorigin---')
+  // 边界问题
+  if(len <= 1){
+    return arr;
+  }
+  // 重复分割
+  // 分割下标
+  const mid = Math.floor(len / 2);
+  // 左边数组
+  let leftArr = mergeSort(arr.slice(0, mid));
+  // 右边数组
+  let rightArr = mergeSort(arr.slice(mid, len));
+  // 合并有序数组
+  arr = mergeArr(leftArr, rightArr);
+  return arr;
+}
+
+function mergeArr(arr1 = [], arr2 = []) {
+  // 合并后的有序数组
+  let res = [];
+  const len1 = arr1.length;
+  let len2 = arr2.length;
+  // 左边数组遍历下标
+  let i = 0;
+  // 右边数组遍历下标
+  let j = 0;
+
+  while (i < len1 && j < len2) {
+    if(arr1[i] < arr2[j]){
+      res.push(arr1[i]);
+      i ++;
+    }else{
+      res.push(arr2[j]);
+      j ++;
+    }
+  }
+  // 如果i或者j未遍历完成，则代表当前数组已经还有更大的数组未合并完成
+  if(i < len1){
+    return res.concat(arr1.slice(i));
+  }else if(j < len2){
+    return res.concat(arr2.slice(j));
+  }
+  return res;
+}
+
+
+const mergeArrTest = generateRandArr(4, 0, 10);
+console.log(mergeArrTest, '--mergeArrTest--');
+testSort('mergeSort', mergeSort, mergeArrTest);
