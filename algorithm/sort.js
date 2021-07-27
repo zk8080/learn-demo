@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-07-21 18:55:40
- * @LastEditTime: 2021-07-21 22:02:01
+ * @LastEditTime: 2021-07-27 21:50:47
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /learn-demo/algorithm/sort.js
@@ -138,3 +138,36 @@ function mergeArr(arr1 = [], arr2 = []) {
 const mergeArrTest = generateRandArr(4, 0, 10);
 console.log(mergeArrTest, '--mergeArrTest--');
 testSort('mergeSort', mergeSort, mergeArrTest);
+
+
+/**
+ * 快速排序 
+*/
+function quickSort(arr = [], l, r) {
+  if(l > r) {
+    return;
+  }
+  const p = patition(arr, l, r);
+  console.log(p, '--p--');
+  quickSort(arr, l, p - 1);
+  quickSort(arr, p + 1, r);
+}
+
+function patition(arr = [], l, r) {
+  // debugger;
+  const v = arr[l];
+  let j = l;
+
+  for (let i = l + 1; i <= r; i++) {
+    if(arr[i] < v){
+      [arr[j + 1], arr[i]] = [arr[i], arr[j + 1]];
+      j ++;
+    }
+  }
+  [arr[l], arr[j]] = [arr[j], arr[l]];
+  return j;
+}
+
+const quickArr = generateRandArr(10, 0, 100);
+console.log(quickArr, '--quickArr--');
+quickSort(quickArr, 0, 9)
