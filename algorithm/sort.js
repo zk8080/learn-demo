@@ -1,12 +1,12 @@
 /*
  * @Author: your name
  * @Date: 2021-07-21 18:55:40
- * @LastEditTime: 2021-07-27 21:50:47
+ * @LastEditTime: 2021-07-28 22:45:12
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /learn-demo/algorithm/sort.js
  */
-import { testSort, generateRandArr } from './common.js';
+import { testSort, generateRandArr, swap, random } from './common.js';
 
 /**
  * 冒泡排序
@@ -148,7 +148,6 @@ function quickSort(arr = [], l, r) {
     return;
   }
   const p = patition(arr, l, r);
-  console.log(p, '--p--');
   quickSort(arr, l, p - 1);
   quickSort(arr, p + 1, r);
 }
@@ -171,3 +170,44 @@ function patition(arr = [], l, r) {
 const quickArr = generateRandArr(10, 0, 100);
 console.log(quickArr, '--quickArr--');
 quickSort(quickArr, 0, 9)
+
+/**
+ * 快速排序优化1
+*/
+function quickSort2(arr, l, r) {
+  if(l > r) {
+    return;
+  }
+  const p = patition2(arr, l, r);
+  quickSort2(arr, l, p - 1);
+  quickSort2(arr, p + 1, r);
+}
+
+function patition2(arr = [], l, r) {
+  swap(arr, l, random(l, r))
+  // 要比对的基准值
+  const v = arr[l];
+
+  // 定义左右指针
+  let i = l + 1, j = r;
+  // 需要满足arr[l+1, ..., i) <=v && arr(j, ..., r] >= v;
+  while(true){
+    while(i <= r && arr[i] < v) i ++;
+    while(j >= l + 1 && arr[j] > v) j --;
+    // 如果i > j 则循环结束
+    if(i > j) break;
+    // 如果i < j 则回出现arr[i] > v 并且 arr[j] < v，此时交换位置，并且左右位置前进一步
+    swap(arr, i, j);
+    i ++;
+    j --;
+  }
+
+  // 将v放在合适的位置，j为当前数组中从后向前看第一个小于等于v的，所以交换位置
+  swap(arr, l, j);
+
+  return j;
+}
+
+const quickArr2 = generateRandArr(10, 0, 100);
+console.log(quickArr2, '--quickArr2--');
+quickSort2(quickArr2, 0, 9)
