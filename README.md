@@ -1,2 +1,2 @@
 # learn-demo
-练习的demo
+学习的demo
