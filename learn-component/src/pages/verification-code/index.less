@@ -1,0 +1,56 @@
+.verification-code--wrapper{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  .verification-code--input{
+    position: absolute;
+    width: 200%;
+    height: 100%;
+    left: -100%;
+    opacity: 0;
+  }
+  .verification-code--container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    .verification-code--item{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 58px;
+      width: 58px;
+      margin: 0 8px;
+      &.item-box{
+        background-color: #ebecee;
+        border-radius: 4px;
+      }
+      &.item-line{
+        border-bottom: 2px solid #aaa;
+      }
+    }
+    .verification-code--value{
+      font-size: 20px;
+    }
+    .verification-code--cursor{
+      height: 28px;
+      width: 2px;
+      background-color: #000;
+		  animation: flash 1s infinite ease;
+    }
+  }
+  @keyframes flash {
+		0% {
+			opacity: 0.2;
+		}
+
+		50% {
+			opacity: 0.5;
+		}
+
+		100% {
+			opacity: 0.2;
+		}
+	}
+}

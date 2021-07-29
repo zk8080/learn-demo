@@ -15,6 +15,7 @@ export default defineConfig({
   routes: [
     { path: '/', component: '@/pages/index' },
     { path: '/list-view', component: '@/pages/list-view/index' },
+    { path: '/verification-code', component: '@/pages/verification-code/index' },
   ],
   request: false,
   fastRefresh: {},
