@@ -16,6 +16,7 @@ export default defineConfig({
     { path: '/', component: '@/pages/index' },
     { path: '/list-view', component: '@/pages/list-view/index' },
     { path: '/verification-code', component: '@/pages/verification-code/index' },
+    { path: '/ceiling', component: '@/pages/ceiling/index' },
   ],
   request: false,
   fastRefresh: {},
