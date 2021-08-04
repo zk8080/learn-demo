@@ -22,6 +22,7 @@
   "dependencies": {
     "@ant-design/pro-layout": "^6.5.0",
     "@better-scroll/core": "^2.2.1",
+    "@better-scroll/pull-up": "^2.4.2",
     "@umijs/preset-react": "1.x",
     "umi": "^3.4.3"
   },
