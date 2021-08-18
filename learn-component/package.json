@@ -24,6 +24,7 @@
     "@better-scroll/core": "^2.2.1",
     "@better-scroll/pull-up": "^2.4.2",
     "@umijs/preset-react": "1.x",
+    "axios": "^0.21.1",
     "umi": "^3.4.3"
   },
   "devDependencies": {
