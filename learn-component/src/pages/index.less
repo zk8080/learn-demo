@@ -2,3 +2,24 @@
   background: rgb(121, 242, 157);
   font-size: 30px;
 }
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 200px;
+  font-size: 20px;
+  background-color: red;
+  .parent {
+    display: flex;
+    flex-direction: column;
+    background-color: green;
+  }
+  .child {
+    // height: 500px;
+    background-color: blue;
+    display: flex;
+    flex-wrap: wrap;
+    span {
+      display: inline-block;
+    }
+  }
+}
