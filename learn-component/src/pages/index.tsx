@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-08-19 22:28:44
- * @LastEditTime: 2021-09-15 23:54:25
+ * @LastEditTime: 2021-11-03 21:55:17
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /learn-demo/learn-component/src/pages/index.tsx
@@ -12,7 +12,10 @@ import { Button } from 'antd';
 import useDebounce from '@/hooks/useDebounce';
 import useThrottle from '@/hooks/useThrottle';
 import useAsync from '@/hooks/useAsync';
+import { Input } from 'zk-play-ui';
 import './index.less';
+
+
 const fn = () => new Promise((resolve) => {
   setTimeout(() => {
     resolve('RESOLVED');
@@ -81,7 +84,9 @@ export default function IndexPage() {
           </div>
         </div>
       </div>
-
+      <Input 
+        size="lg"
+      />
     </div>
   );
 }

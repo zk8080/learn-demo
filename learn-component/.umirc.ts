@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2021-03-21 16:53:07
- * @LastEditTime: 2021-03-21 17:45:53
+ * @LastEditTime: 2021-11-03 21:56:01
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /scroll-nav/.umirc.ts
@@ -17,6 +17,7 @@ export default defineConfig({
     { path: '/list-view', component: '@/pages/list-view/index' },
     { path: '/verification-code', component: '@/pages/verification-code/index' },
     { path: '/ceiling', component: '@/pages/ceiling/index' },
+    { path: '/reducerTest', component: '@/pages/reducerTest/index' },
   ],
   request: false,
   fastRefresh: {},
@@ -41,5 +42,16 @@ export default defineConfig({
         }
       },
     },
-  }
+  },
+  extraBabelPlugins: [
+    [
+      'import',
+      {
+        libraryName: 'zk-play-ui',
+        style: true,
+        libraryDirectory: 'es', // 或 lib
+      },
+      'zk-play-ui',
+    ],
+  ],
 });
