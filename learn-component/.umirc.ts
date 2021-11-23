@@ -13,7 +13,14 @@ export default defineConfig({
     type: 'none',
   },
   routes: [
-    { path: '/', component: '@/pages/index' },
+    {
+      path: '/', 
+      component: '@/layout/index',
+      routes: [
+        { path: '/', component: '@/pages/index' },
+        { path: '/test', component: '@/pages/test' },
+      ]
+    },
     { path: '/list-view', component: '@/pages/list-view/index' },
     { path: '/verification-code', component: '@/pages/verification-code/index' },
     { path: '/ceiling', component: '@/pages/ceiling/index' },
@@ -43,15 +50,15 @@ export default defineConfig({
       },
     },
   },
-  extraBabelPlugins: [
-    [
-      'import',
-      {
-        libraryName: 'zk-play-ui',
-        style: true,
-        libraryDirectory: 'es', // 或 lib
-      },
-      'zk-play-ui',
-    ],
-  ],
+  // extraBabelPlugins: [
+  //   [
+  //     'import',
+  //     {
+  //       libraryName: 'zk-play-ui',
+  //       style: true,
+  //       libraryDirectory: 'es', // 或 lib
+  //     },
+  //     'zk-play-ui',
+  //   ],
+  // ],
 });

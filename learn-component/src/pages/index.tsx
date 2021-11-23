@@ -12,8 +12,9 @@ import { Button } from 'antd';
 import useDebounce from '@/hooks/useDebounce';
 import useThrottle from '@/hooks/useThrottle';
 import useAsync from '@/hooks/useAsync';
-import { Input } from 'zk-play-ui';
+// import { Input } from 'zk-play-ui';
 import './index.less';
+import { getCookie } from '@/utils/cookie';
 
 
 const fn = () => new Promise((resolve) => {
@@ -25,7 +26,7 @@ const fn = () => new Promise((resolve) => {
 const usePrevious = (preValue: any) => {
     const ref = useRef();
     useEffect(() => {
-      console.log(preValue, '--preValue--');
+      // console.log(preValue, '--preValue--');
         ref.current = preValue;
     }, [preValue])
     
@@ -37,15 +38,18 @@ export default function IndexPage() {
   const [count, setCount] = useState<number>(0);
   const preCount = usePrevious(count);
   const { data, isLoading, error } = useAsync(fn, []);
-  console.log(count, '---count--');
-  console.log(preCount, '--preCount--');
+  // console.log(count, '---count--');
+  // console.log(preCount, '--preCount--');
   useEffect(() => {
     const getData = async () => {
       const res = await http.get<string>('/test', {params: {a: 1}});
-      console.log(res.data)
-      console.log(res, '---res--');
+      // console.log(res.data)
+      // console.log(res, '---res--');
     }
     getData();
+    console.log('子组件---useEffect--')
+    const test_Cookie = getCookie('test');
+    console.log(test_Cookie, '----test_Cookie---');
   }, [])
 
   const handleClick = useThrottle(() => {
@@ -84,9 +88,9 @@ export default function IndexPage() {
           </div>
         </div>
       </div>
-      <Input 
+      {/* <Input 
         size="lg"
-      />
+      /> */}
     </div>
   );
 }
