@@ -13,19 +13,20 @@ export default defineConfig({
     type: 'none',
   },
   routes: [
+    { path: '/list-view', component: '@/pages/list-view/index' },
+    { path: '/verification-code', component: '@/pages/verification-code/index' },
+    { path: '/ceiling', component: '@/pages/ceiling/index' },
+    { path: '/reducerTest', component: '@/pages/reducerTest/index' },
+    { path: '/testRef', exact: true, component: '@/pages/TestRef/index' },
     {
       path: '/', 
       component: '@/layout/index',
       routes: [
         { path: '/', component: '@/pages/index' },
-        { path: '/test', component: '@/pages/test' },
+        { path: '/test', component: '@/pages/test', exact: true },
       ]
     },
-    { path: '/list-view', component: '@/pages/list-view/index' },
-    { path: '/verification-code', component: '@/pages/verification-code/index' },
-    { path: '/ceiling', component: '@/pages/ceiling/index' },
-    { path: '/reducerTest', component: '@/pages/reducerTest/index' },
-    { path: '/testRef', component: '@/pages/TestRef/index' },
+    
   ],
   request: false,
   fastRefresh: {},
