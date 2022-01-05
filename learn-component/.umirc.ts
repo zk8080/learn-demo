@@ -18,6 +18,7 @@ export default defineConfig({
     { path: '/verification-code', component: '@/pages/verification-code/index' },
     { path: '/ceiling', component: '@/pages/ceiling/index' },
     { path: '/reducerTest', component: '@/pages/reducerTest/index' },
+    { path: '/testRef', component: '@/pages/TestRef/index' },
   ],
   request: false,
   fastRefresh: {},
