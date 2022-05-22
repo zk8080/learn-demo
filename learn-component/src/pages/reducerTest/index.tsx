@@ -8,69 +8,71 @@
  */
 import React, { Reducer, useReducer } from 'react';
 
-// type ActionMap<M extends { [index: string]: any }> = {
-//   [Key in keyof M]: M[Key] extends undefined
-//     ? {
-//         type: Key
-//       }
-//     : {
-//         type: Key
-//         payload: M[Key]
-//       }
-// }
+type ActionMap<M extends Record<string, any>> = {
+  [Key in keyof M]: M[Key] extends undefined
+    ? {
+        type: Key
+      }
+    : {
+        type: Key
+        payload: M[Key]
+      }
+}
 
-// enum Types {
-//   Name = 'Change_Name',
-//   Age = 'Change_Age',
-// }
+enum Types {
+  Name = 'Change_Name',
+  Age = 'Change_Age',
+}
 
-// type StateType = {
-//   name: string;
-//   age: number;
-// }
-
-// type PayloadType = {
-//   [Types.Name]: string;
-//   [Types.Age]: number;
-// }
-
-// type Action = ActionMap<PayloadType>[keyof ActionMap<PayloadType>]
-
-// const initialState = {
-//   name: '小明',
-//   age: 18
-// }
-
-// const reducerAction: Reducer<StateType, Action> = (
-//   state,
-//   action,
-// ) => {
-//   switch (action.type) {
-//     case Types.Name:
-//       return { ...state, name: action.payload };
-//     case Types.Age:
-//       return { ...state, age: action.payload };
-//     default:
-//       return state;
-//   }
-// };
 type StateType = {
   name: string;
   age: number;
 }
+
+type PayloadType = {
+  [Types.Name]: string;
+  [Types.Age]: number;
+}
+
+type TestAction = ActionMap<PayloadType>;
+
+type Action = ActionMap<PayloadType>[keyof ActionMap<PayloadType>]
 
 const initialState = {
   name: '小明',
   age: 18
 }
 
-const simpleReducer = (prevState: StateType, updatedProperty: Partial<StateType>): StateType => ({
-  ...prevState,
-  ...updatedProperty
-})
+const reducerAction: Reducer<StateType, Action> = (
+  state,
+  action,
+) => {
+  switch (action.type) {
+    case Types.Name:
+      return { ...state, name: action.payload };
+    case Types.Age:
+      return { ...state, age: action.payload };
+    default:
+      return state;
+  }
+};
+// type StateType = {
+//   name: string;
+//   age: number;
+// }
+
+// const initialState = {
+//   name: '小明',
+//   age: 18
+// }
+
+// const simpleReducer = (prevState: StateType, updatedProperty: Partial<StateType>): StateType => ({
+//   ...prevState,
+//   ...updatedProperty
+// })
 
 function ReducerTest() {
-  const [state, setState] = useReducer(simpleReducer, initialState);
+  const [state, setState] = useReducer(reducerAction, initialState);
   return (
     <div>
       <div>姓名：{state.name}</div>
