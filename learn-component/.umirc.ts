@@ -18,15 +18,7 @@ export default defineConfig({
     { path: '/ceiling', component: '@/pages/ceiling/index' },
     { path: '/reducerTest', component: '@/pages/reducerTest/index' },
     { path: '/testRef', exact: true, component: '@/pages/TestRef/index' },
-    {
-      path: '/', 
-      component: '@/layout/index',
-      routes: [
-        { path: '/', component: '@/pages/index' },
-        { path: '/test', component: '@/pages/test', exact: true },
-      ]
-    },
-    
+    { path: '/editableForm', exact: true, component: '@/pages/EditableForm/index' },
   ],
   request: false,
   fastRefresh: {},
@@ -63,4 +55,17 @@ export default defineConfig({
   //     'zk-play-ui',
   //   ],
   // ],
+  extraBabelPlugins: [
+    [
+      'babel-plugin-import',
+      { libraryName: 'antd', libraryDirectory: 'es', style: true },
+      'antd',
+    ],
+    [
+      'babel-plugin-import',
+      { libraryName: '@formily/antd', libraryDirectory: 'esm', style: true },
+      '@formily/antd',
+    ],
+  ],
+  devServer: {}
 });
